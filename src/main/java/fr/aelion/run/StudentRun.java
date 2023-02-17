@@ -8,9 +8,9 @@ import fr.aelion.models.Student;
  */
 public class StudentRun {
     public void run(){
-        System.out.println("--------------------------------------");
+        //System.out.println("--------------------------------------");
         Student st=new Student("toto", "tutu","boudi_mohand@coucou.fr");
-        System.out.println(st.toString());
+        //System.out.println(st.toString());
         st.setUserName("toutou");
         st.setPassword("12345");
         if(st.isLoggedIn()==false){
