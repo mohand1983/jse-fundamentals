@@ -1,17 +1,16 @@
 package fr.aelion.user;
 
+import fr.aelion.models.Student;
+import fr.aelion.repositories.StudentRepository;
+
 /**
  *
  */
 public class LoginManager {
     private String login;
     private String password;
-    public void login(){
+    private StudentRepository studentRepository=new StudentRepository();
 
-    }
-    public void logout(){
-
-    }
     /**
      * Constructeur
      */
@@ -26,5 +25,12 @@ public class LoginManager {
 
     public String getPassword() {
         return password;
+    }
+    public String login(){
+    return this.studentRepository.findByLoginAndPassword(this.login, this.password) ?"200 ok" : "404 NOT Found";
+
+    }
+    public void logout(){
+
     }
 }
