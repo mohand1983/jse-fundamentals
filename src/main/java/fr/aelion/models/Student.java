@@ -86,6 +86,9 @@ public class Student {
 
         return this.isLoggedIn;
     }
+    public void isLoggedIn(boolean isLoggedIn){
+        this.isLoggedIn=isLoggedIn;
+    }
 
     @Override
     public String toString() {
