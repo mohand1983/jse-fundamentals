@@ -1,5 +1,7 @@
 package fr.aelion.helpers.interfaces;
 
+import java.util.Optional;
+
 public interface Builder<T> {
-    T build();
+    T build() throws Exception;
 }
