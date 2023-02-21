@@ -4,6 +4,8 @@ package fr.aelion.helpers;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.course.*;
 
+import java.util.Optional;
+
 public class MediaBuilder implements Builder<Media> {
     private String title;
     private String summary;
@@ -32,7 +34,7 @@ public class MediaBuilder implements Builder<Media> {
         return this;
     }
     @Override
-    public Media build() {
+    public Optional<Media> build() {
         Media media;
         switch (this.mediaType.toUpperCase()){
             case "VIDEO":
@@ -52,7 +54,7 @@ public class MediaBuilder implements Builder<Media> {
         media.setAuthor(this.author);
         media.setDuration(this.duration);
         media.setSummary(this.summary);
-        return media;
+        return Optional.of(media);
     }
 }
 

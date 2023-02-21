@@ -2,7 +2,7 @@ package fr.aelion.models.course;
 
 public abstract class Media {
     protected String title;
-    protected String Summary;
+    protected String summary;
     protected Float duration;
     //@todo create Author and move type to
     protected  Author author;
@@ -16,11 +16,11 @@ public abstract class Media {
     }
 
     public String getSummary() {
-        return Summary;
+        return summary;
     }
 
     public void setSummary(String summary) {
-        Summary = summary;
+        this.summary = summary;
     }
 
     public Float getDuration() {

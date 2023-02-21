@@ -24,18 +24,18 @@ class MediaBuilderTest {
     @Test
     @DisplayName("should be an instance Video class")
     void build(){
-        assertTrue(mediaBuilder.build() instanceof Video);
+        assertTrue(mediaBuilder.build().get() instanceof Video);
     }
     @Test
     @DisplayName("Title should be 'Test'")
     void titleAttributeTest(){
-        Media video=mediaBuilder.build();
+        Media video=mediaBuilder.build().get();
         assertEquals("Test", video.getTitle());
     }
     @Test
     @DisplayName("should have correct attribute values")
     void attributesTest(){
-        Media video= mediaBuilder.build();
+        Media video= mediaBuilder.build().get();
         Float duration=5.35F;
         assertAll(
                 ()->assertEquals("Test", video.getTitle()),
