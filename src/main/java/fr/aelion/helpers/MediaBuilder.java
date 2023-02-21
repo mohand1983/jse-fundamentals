@@ -50,6 +50,10 @@ public class MediaBuilder implements Builder<Media> {
                 media=new Video();
 
         }
+        //Hey Buddy
+        if (this.title==null || this.duration==null) {
+            return Optional.empty();
+        }
         media.setTitle(this.title);
         media.setAuthor(this.author);
         media.setDuration(this.duration);

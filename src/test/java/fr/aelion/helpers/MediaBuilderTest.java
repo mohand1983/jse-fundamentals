@@ -7,9 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MediaBuilderTest {
+    private MediaBuilder badBuilder =new MediaBuilder();
     private MediaBuilder mediaBuilder =new MediaBuilder();
     @BeforeEach
     void setUp() {
@@ -19,6 +22,10 @@ class MediaBuilderTest {
                 .summary("joli test de builder")
                 .author(new Author())
                 .duration(5.35F);
+        badBuilder
+                .author(new Author())
+                .summary("L'objet ne sera pas créé")
+                .title("No Name");
     }
 
     @Test
@@ -44,6 +51,14 @@ class MediaBuilderTest {
                 ()->assertTrue(video.getAuthor() instanceof Author)
         );
 
+    }
+    @Test
+    @DisplayName("Optionnal should be empty")
+    void notEnoughAttribute(){
+        assertAll(
+                ()->assertTrue(badBuilder.build() instanceof Optional<Media>),
+                ()->assertTrue(badBuilder.build().isEmpty())
+        );
     }
 
 
