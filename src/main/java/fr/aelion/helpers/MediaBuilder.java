@@ -14,6 +14,7 @@ public class MediaBuilder implements Builder<Media> {
     private String mediaType;
 
     public void setMediaType(String mediaType) {
+
         this.mediaType = mediaType;
     }
 
@@ -39,6 +40,14 @@ public class MediaBuilder implements Builder<Media> {
 
 
 
+        Media media = switch (this.mediaType.toUpperCase()) {
+            case "VIDEO" -> new Video();
+            case "DOCUMENT" -> new Document();
+            case "SILDE" -> new Slide();
+            default -> new Video();
+        };
+        /*
+        Une autre façon de faire
         Media media;
         switch (this.mediaType.toUpperCase()){
             case "VIDEO":
@@ -54,6 +63,7 @@ public class MediaBuilder implements Builder<Media> {
                 media=new Video();
 
         }
+         */
         //Hey Buddy
         if (this.title==null || this.duration==null) {
            throw new Exception("Title or duration is missing, unable to create Media");
