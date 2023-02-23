@@ -1,6 +1,8 @@
 package fr.aelion.helpers;
 
 
+import fr.aelion.helpers.exceptions.NoMediaTypeException;
+import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.course.*;
 
@@ -35,10 +37,15 @@ public class MediaBuilder implements Builder<Media> {
         return this;
     }
     @Override
-    public Media build() throws Exception {
+    public Media build() throws NoMediaTypeException, NotEnoughArgsException{
 
-
-
+        //Hey Buddy
+        if (this.title==null || this.duration==null) {
+            throw new NotEnoughArgsException();
+        }
+        if(this.mediaType==null){
+            throw new NoMediaTypeException();
+        }
 
         Media media = switch (this.mediaType.toUpperCase()) {
             case "VIDEO" -> new Video();
@@ -46,31 +53,7 @@ public class MediaBuilder implements Builder<Media> {
             case "SILDE" -> new Slide();
             default -> new Video();
         };
-        /*
-        Une autre façon de faire
-        Media media;
-        switch (this.mediaType.toUpperCase()){
-            case "VIDEO":
-                media=new Video();
-                break;
-            case "DOCUMENT":
-                media=new Document();
-                break;
-            case "SILDE":
-                media=new Slide();
-                break;
-            default:
-                media=new Video();
 
-        }
-         */
-        //Hey Buddy
-        if (this.title==null || this.duration==null) {
-           throw new Exception("Title or duration is missing, unable to create Media");
-        }
-        if(this.mediaType==null){
-            throw new Exception("Media type is null, cannot create Media");
-        }
         media.setTitle(this.title);
         media.setAuthor(this.author);
         media.setDuration(this.duration);

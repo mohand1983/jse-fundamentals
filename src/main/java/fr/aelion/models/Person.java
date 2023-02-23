@@ -1,28 +1,24 @@
 package fr.aelion.models;
 
 public class Person {
-    //les attributs
-    private String lastName;
-    private String firstName;
 
+    protected String lastName;
+    protected String firstName;
+    protected String phoneNumber;
+    protected String email;
 
-    private String phoneNumber;
-    private String email;
-    //le constructeur
-    public Person(String firstName, String lastName, String phoneNumber, String email){
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.phoneNumber=phoneNumber;
-        this.email=email;
+    public Person() {}
+    public Person(String lastName, String email) {
+        this.lastName = lastName;
+        this.email = email;
     }
-    public Person(String lastName,String email){
-        this.lastName=lastName;
-        this.email=email;
+    public Person(String lastName, String firstName, String phoneNumber, String email) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
-    public Person(){
 
-    }
-    //les getters et les setters
     public String getLastName() {
         return lastName;
     }
@@ -55,9 +51,7 @@ public class Person {
         this.email = email;
     }
 
-    //les méthodes
-    public String greetings(){
-        return this.firstName + "  " +this.lastName.toUpperCase();
+    public String greetings() {
+        return this.firstName + " " + this.lastName.toUpperCase();
     }
-
 }

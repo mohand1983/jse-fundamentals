@@ -1,9 +1,13 @@
 package fr.aelion.run;
 
 import fr.aelion.helpers.MediaBuilder;
+import fr.aelion.helpers.exceptions.NoMediaTypeException;
+import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.models.course.*;
 import fr.aelion.repositories.course.Course;
 import fr.aelion.services.courses.DisplayCourse;
+
+import java.sql.SQLOutput;
 
 public class CourseRun {
     private Course course=new Course();
@@ -45,28 +49,41 @@ public class CourseRun {
 
     try{
         this.course.addMedia(videoBuilder.build());
-    }catch (Exception e){
-        System.out.println("Unable to add the video media");
-
+    }catch (NoMediaTypeException e){
+        System.out.println(e.getMessage());
+    }catch (NotEnoughArgsException e){
+        System.out.println(e.getMessage());
     }
         try{
             this.course.addMedia(slideBuilder.build());
-        }catch (Exception e){
-            System.out.println("Unable to add the slide media");
+        }catch (NoMediaTypeException e){
+            System.out.println(e.getMessage());
 
+        }catch (NotEnoughArgsException e){
+            System.out.println(e.getMessage());
         }
         try{
             this.course.addMedia(documentBuilder.build());
-        }catch (Exception e){
-            System.out.println("Unable to add doc" +
-                    " media");
+        }catch (NoMediaTypeException e){
+            System.out.println(e.getMessage());
 
+        }catch (NotEnoughArgsException e){
+            System.out.println(e.getMessage());
         }
         try{
             this.course.addMedia(badBuilder.build());
-        }catch (Exception e){
+        }catch (NoMediaTypeException e){
             System.out.println(e.getMessage());
+            badBuilder.setMediaType("video");
 
+        }catch (NotEnoughArgsException e){
+            System.out.println(e.getMessage());
+        }finally {
+            try{
+                this.course.addMedia(badBuilder.build());
+            }catch (Exception e){
+                System.out.println("So bad... one more error");
+            }
         }
 
 
