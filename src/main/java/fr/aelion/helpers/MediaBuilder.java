@@ -3,6 +3,7 @@ package fr.aelion.helpers;
 
 import fr.aelion.helpers.exceptions.NoMediaTypeException;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
+import fr.aelion.helpers.fatory.MediaFactory;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.course.*;
 
@@ -47,12 +48,10 @@ public class MediaBuilder implements Builder<Media> {
             throw new NoMediaTypeException();
         }
 
-        Media media = switch (this.mediaType.toUpperCase()) {
-            case "VIDEO" -> new Video();
-            case "DOCUMENT" -> new Document();
-            case "SILDE" -> new Slide();
-            default -> new Video();
-        };
+        Media media =new MediaFactory().getMedia(this.mediaType);
+        if(media==null){
+            throw new IllegalArgumentException("MediaType" +mediaType+ "doest't exist");
+        }
 
         media.setTitle(this.title);
         media.setAuthor(this.author);
