@@ -7,7 +7,6 @@ import fr.aelion.helpers.fatory.MediaFactory;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.course.*;
 
-import java.util.Optional;
 
 public class MediaBuilder implements Builder<Media> {
     private String title;

@@ -13,8 +13,10 @@ public class Main {
         personRun.run();
         StudentRun studentRun=new StudentRun();
         studentRun.run();*/
-        CourseRun courseRun= new CourseRun();
-        courseRun.run();
+        /*CourseRun courseRun= new CourseRun();
+        courseRun.run();*/
+        StudentRun studentRun=new StudentRun();
+        studentRun.run();
 
     }
 
