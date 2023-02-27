@@ -5,6 +5,8 @@ import fr.aelion.models.course.Video;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DtoMapperTest {
@@ -17,8 +19,15 @@ class DtoMapperTest {
     }
 
     @Test
-    void map() {
-        String[] fields ={"title", "duration"};
-        assertArrayEquals(fields, mapper.map(video, dto));
+    void map() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        //String[] fields ={"title", "duration"};
+        //assertArrayEquals(fields, mapper.map(video, dto));
+        MediaListDto mappedDto=(MediaListDto) mapper.map(video, dto);
+        assertAll(
+                ()->assertEquals(video.getTitle(), mappedDto.title),
+                ()->assertEquals(video.getDuration(), mappedDto.duration)
+        );
+
+
     }
 }
