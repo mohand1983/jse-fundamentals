@@ -1,4 +1,4 @@
-package fr.aelion.helpers.fatory;
+package fr.aelion.helpers.factory;
 
 import fr.aelion.models.course.Media;
 import org.junit.jupiter.api.BeforeEach;

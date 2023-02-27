@@ -7,8 +7,6 @@ import fr.aelion.models.course.*;
 import fr.aelion.repositories.course.Course;
 import fr.aelion.services.courses.DisplayCourse;
 
-import java.sql.SQLOutput;
-
 public class CourseRun {
     private Course course=new Course();
     public CourseRun(){

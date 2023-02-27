@@ -3,7 +3,7 @@ package fr.aelion.helpers;
 
 import fr.aelion.helpers.exceptions.NoMediaTypeException;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
-import fr.aelion.helpers.fatory.MediaFactory;
+import fr.aelion.helpers.factory.MediaFactory;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.course.*;
 

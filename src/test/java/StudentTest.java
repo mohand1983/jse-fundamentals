@@ -28,10 +28,9 @@ public class StudentTest {
         @Test
         @DisplayName("Student should have 'Casper' as lastName")
         void testPublicAttribute() {
-            Student student = new Student("Tartempion", "Jules", "jt@test.com");
+            Student student = new Student("Casper", "Jules", "jt@test.com");
             student.setLastName("Casper");
             assertEquals("Casper", student.getLastName());
         }
-
     }
 

@@ -1,9 +1,6 @@
-package fr.aelion.helpers.fatory;
+package fr.aelion.helpers.factory;
 
-import fr.aelion.models.course.Document;
 import fr.aelion.models.course.Media;
-import fr.aelion.models.course.Slide;
-import fr.aelion.models.course.Video;
 
 import java.util.HashMap;
 
