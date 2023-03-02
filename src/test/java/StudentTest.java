@@ -2,7 +2,6 @@ import fr.aelion.models.Student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,6 +11,7 @@ public class StudentTest {
 
         @BeforeEach()
         void setUp() {
+
             student = new Student("Aubert", "Jean-Luc", "jean-luc.aubert@aelion.fr");
         }
 
