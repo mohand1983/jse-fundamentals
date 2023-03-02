@@ -12,7 +12,12 @@ public class StudentTest {
         @BeforeEach()
         void setUp() {
 
-            student = new Student("Aubert", "Jean-Luc", "jean-luc.aubert@aelion.fr");
+            student = new Student();
+
+            student.setLastName("Aubert");
+            student.setFirstName("Jean-luc");
+            student.setEmail("jean-luc.aubert@aelion.fr");
+
         }
 
         @Test
@@ -28,8 +33,11 @@ public class StudentTest {
         @Test
         @DisplayName("Student should have 'Casper' as lastName")
         void testPublicAttribute() {
-            Student student = new Student("Casper", "Jules", "jt@test.com");
+            Student student = new Student();
+
             student.setLastName("Casper");
+            student.setFirstName("jules");
+            student.setEmail("jt@test.com");
             assertEquals("Casper", student.getLastName());
         }
     }

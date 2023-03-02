@@ -1,8 +1,14 @@
+import fr.aelion.models.Student;
 import fr.aelion.repositories.StudentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.stream.events.StartDocument;
+import java.sql.SQLException;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StudentRepositoryTest {
@@ -12,9 +18,35 @@ public class StudentRepositoryTest {
         studentRepository=new StudentRepository();
     }
     @Test
-    @DisplayName("Student list should have 1 element ")
-    public void setStudentinstanciationTest(){
-        assertEquals(1,studentRepository.size());
+    @DisplayName("Student list should have 100 element ")
+    public void setStudentinstanciationTest() throws SQLException {
+        List<Student> students=studentRepository.findAll();
+        assertEquals(100,students.size());
     }
+    @Test
+    @DisplayName("should have ")
+    public void firstStudentMustMatch() throws SQLException{
+        List<Student> students=studentRepository.findAll();
+        Student student=students.get(0);
+        assertAll(
+                ()->assertEquals("Andre", student.getLastName()),
+                ()->assertEquals(26 , student.getId()),
+                ()->assertEquals("Oury", student.getFirstName())
+
+        );
+    }
+    @Test
+    @DisplayName("should have ")
+    public void findByLoginAndPassword() throws SQLException{
+        Student student=studentRepository.findByLoginAndPassword("Andre_Oury36", "ca7DWWSiHMpsag1Mh986");
+        assertAll(
+                ()->assertEquals("Andre_Oury36", student.getUsername()),
+                ()->assertEquals("ca7DWWSiHMpsag1Mh986", student.getPassword())
+
+        );
+    }
+
+
+
 
 }

@@ -33,20 +33,20 @@ public class LoginManager {
 
     public String login() {
         //return this.studentRepository.findByLoginAndPassword(this.login, this.password) ?"200 ok" : "404 NOT Found";
-        if (this.login.equals(null) || this.password.equals(null)) {
+        /*if (this.login.equals(null) || this.password.equals(null)) {
             return "403 Forbidden";
-        }
-        Student student = this.studentRepository.findByLoginAndPassword(this.login, this.password);
+        }*/
+       /* Student student = this.studentRepository.findByLoginAndPassword(this.login, this.password);
         if (student instanceof Student){
             student.isLoggedIn(true);
             return "200 ok" ;
-        }
+        }*/
         return "404 NOT Found";
     }
     public void logout() {
-        Student student =this.studentRepository.findByLoginAndPassword(this.login, this.password);
+        /*Student student =this.studentRepository.findByLoginAndPassword(this.login, this.password);
         if(student instanceof Student){
             student.isLoggedIn(false);
-        }
+        }*/
         }
 }
