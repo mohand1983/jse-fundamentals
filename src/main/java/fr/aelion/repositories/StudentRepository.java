@@ -77,6 +77,27 @@ public class StudentRepository {
         resultSet.close();
         this.dbconnect.disconnect();
         return null;
-
+    }
+    public Student findById(int id) throws SQLException {
+        //Need a sql Query
+        String sqlQuery="SELECT id, last_name, first_name, email, phone_number, login, password ";
+        sqlQuery+="FROM student WHERE id= '" +id+ "';";
+        //Send sqlQuery to RDBMS => Need to create a statement object
+        Connection connection=this.dbconnect.connect();
+        Statement statement=connection.createStatement();
+        ResultSet resultSet= statement.executeQuery(sqlQuery);
+        if(resultSet.next()==false){
+            return null;
+        }else{
+            Student student=new Student();
+            student.setId(resultSet.getInt("id"));
+            student.setLastName(resultSet.getString("last_name"));
+            student.setFirstName(resultSet.getString("first_name"));
+            student.setEmail(resultSet.getString("email"));
+            student.setPhoneNumber(resultSet.getString("phone_number"));
+            student.setUsername(resultSet.getString("login"));
+            student.setPassword(resultSet.getString("password"));
+            return student;
+        }
     }
 }

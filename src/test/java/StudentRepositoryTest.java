@@ -1,3 +1,4 @@
+import fr.aelion.helpers.exceptions.StudentException;
 import fr.aelion.models.Student;
 import fr.aelion.repositories.StudentRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,8 +9,7 @@ import javax.xml.stream.events.StartDocument;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StudentRepositoryTest {
     StudentRepository studentRepository;
@@ -42,6 +42,16 @@ public class StudentRepositoryTest {
         assertAll(
                 ()->assertEquals("Andre_Oury36", student.getUsername()),
                 ()->assertEquals("ca7DWWSiHMpsag1Mh986", student.getPassword())
+
+        );
+    }
+    @Test
+    @DisplayName("should have ID ")
+    public void findById() throws StudentException, SQLException{
+        Student student=studentRepository.findById(26);
+        assertAll(
+                ()->assertTrue(student instanceof Student),
+                ()->assertEquals("Andre", student.getLastName())
 
         );
     }
